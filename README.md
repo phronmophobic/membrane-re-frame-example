@@ -4,15 +4,14 @@ A proof of concept to demonstrate using re-frame on top of a another platform be
 
 ## Screenshots
 
-Desktop
-![desktop](term-demo.gif?raw=true)
+### Desktop
+![desktop](desktop-demo.gif?raw=true)
 
-Terminal
+### Terminal
 ![terminal example](term-demo.gif?raw=true)
 
 
 ## Usage
-
 
 Desktop
     $ lein run -m membrane-re-frame-example.views
