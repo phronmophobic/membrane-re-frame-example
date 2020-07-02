@@ -1,6 +1,6 @@
 # membrane-re-frame-example
 
-A proof of concept to demonstrate using re-frame on top of a another platform besides reagent/react.
+A proof of concept to demonstrate using re-frame for desktop and terminal apps.
 
 ## Screenshots
 
