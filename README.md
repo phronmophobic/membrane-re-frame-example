@@ -1,32 +1,23 @@
 # membrane-re-frame-example
 
-FIXME: description
+A proof of concept to demonstrate using re-frame on top of a another platform besides reagent/react.
 
-## Installation
+## Screenshots
 
-Download from http://example.com/FIXME.
+Desktop
+![desktop](term-demo.gif?raw=true)
+
+Terminal
+![terminal example](term-demo.gif?raw=true)
+
 
 ## Usage
 
-FIXME: explanation
 
-    $ java -jar membrane-re-frame-example-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+Desktop
+    $ lein run -m membrane-re-frame-example.views
+Terminal
+    $ lein run -m membrane-re-frame-example.term-view
 
 ## License
 
