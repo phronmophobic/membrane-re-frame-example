@@ -13,10 +13,10 @@ A proof of concept to demonstrate using re-frame on top of a another platform be
 
 ## Usage
 
-Desktop
-    $ lein run -m membrane-re-frame-example.views
-Terminal
-    $ lein run -m membrane-re-frame-example.term-view
+### Desktop
+`$ lein run -m membrane-re-frame-example.views`
+### Terminal
+`$ lein run -m membrane-re-frame-example.term-view`
 
 ## License
 
