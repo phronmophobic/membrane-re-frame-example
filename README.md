@@ -2,6 +2,10 @@
 
 A proof of concept to demonstrate using re-frame for desktop and terminal apps.
 
+The code is largely derived from https://github.com/day8/re-frame/tree/master/examples/todomvc. Except for some browser specific code, the subs, db, and events are the same.
+
+Both the desktop and the terminal app fully share subs, db, and events. Each has their own view implementation.
+
 ## Screenshots
 
 ### Desktop
