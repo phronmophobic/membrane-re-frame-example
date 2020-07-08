@@ -22,6 +22,11 @@ Both the desktop and the terminal app fully share subs, db, and events. Each has
 ### Terminal
 `$ lein run -m membrane-re-frame-example.term-view`
 
+re-frame+membrane can be compiled using graalvm. To compile your terminal app using graalvm:
+
+1. [Download and install graalvm](https://github.com/BrunoBonacci/graalvm-clojure/blob/master/doc/clojure-graalvm-native-binary.md#step1---download-and-install-graalvm)
+2. run `lein native`
+
 ## License
 
 Copyright © 2020 FIXME
