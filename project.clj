@@ -7,6 +7,15 @@
                  [com.phronemophobic/membrane "0.9.9-beta-SNAPSHOT"]
                  [re-frame "1.0.0-rc3"]
                  [com.googlecode.lanterna/lanterna "3.0.2"]]
+  :jvm-opts ["-Dclojure.compiler.direct-linking=true"]
+  :aliases
+  {"native"
+   ["shell"
+    "native-image" "--report-unsupported-elements-at-runtime"
+    "--initialize-at-build-time" "--no-server" "--no-fallback"
+    "-jar" "./target/uberjar/${:uberjar-name:-${:name}-${:version}-standalone.jar}"
+    "-H:Name=./target/${:name}"]}
   :main ^:skip-aot membrane-re-frame-example.term-view
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:uberjar {:aot :all}
+             :dev {:plugins [[lein-shell "0.5.0"]]}})
