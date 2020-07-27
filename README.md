@@ -1,6 +1,6 @@
 # membrane-re-frame-example
 
-A proof of concept to demonstrate using re-frame for desktop and terminal apps.
+A proof of concept to demonstrate using re-frame on top of [membrane](https://github.com/phronmophobic/membrane) for desktop and terminal apps.
 
 The code is largely derived from https://github.com/day8/re-frame/tree/master/examples/todomvc. Except for some browser specific code, the subs, db, and events are the same.
 
