@@ -7,7 +7,6 @@
                  [com.phronemophobic/membrane "0.9.9-beta-SNAPSHOT"]
                  [re-frame "1.0.0-rc3"]
                  [com.googlecode.lanterna/lanterna "3.0.2"]]
-  :jvm-opts ["-Dclojure.compiler.direct-linking=true"]
   :aliases
   {"native"
    ["shell"
@@ -17,5 +16,6 @@
     "-H:Name=./target/${:name}"]}
   :main ^:skip-aot membrane-re-frame-example.term-view
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}
+  :profiles {:uberjar {:aot :all
+                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}
              :dev {:plugins [[lein-shell "0.5.0"]]}})
