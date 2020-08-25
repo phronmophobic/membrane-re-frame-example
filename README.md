@@ -1,6 +1,6 @@
 # membrane-re-frame-example
 
-A proof of concept to demonstrate using re-frame for desktop and terminal apps.
+A proof of concept to demonstrate using re-frame on top of [membrane](https://github.com/phronmophobic/membrane) for desktop and terminal apps.
 
 The code is largely derived from https://github.com/day8/re-frame/tree/master/examples/todomvc. Except for some browser specific code, the subs, db, and events are the same.
 
@@ -31,7 +31,7 @@ re-frame+membrane can be compiled using graalvm. To compile your terminal app us
 
 ## License
 
-Copyright © 2020 FIXME
+Copyright © 2020 Adrian
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License 2.0 which is available at
