@@ -25,8 +25,9 @@ Both the desktop and the terminal app fully share subs, db, and events. Each has
 re-frame+membrane can be compiled using graalvm. To compile your terminal app using graalvm:
 
 1. [Download and install graalvm](https://github.com/BrunoBonacci/graalvm-clojure/blob/master/doc/clojure-graalvm-native-binary.md#step1---download-and-install-graalvm)
-2. Run `lein native`
-3. Run the terminal app `./target/membrane-re-frame-example`
+2. Run `lein uberjar`
+3. Run `lein native`
+4. Run the terminal app `./target/membrane-re-frame-example`
 
 ## License
 
