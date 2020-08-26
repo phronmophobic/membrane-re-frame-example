@@ -154,11 +154,22 @@
 (defn -main [& args]
   (dispatch [:initialize-db])  
   (skia/run #(memframe/re-frame-app (todo-app))))
-#_(ui/mouse-down
- (ui/translate 50 50
-               (on
-                :mouse-down
-                (fn [[x y]]
-                  (prn x y))
-                (ui/button "asdfasdfasfdaf")))
- [51 51])
+
+
+(defn test-scrollview [text]
+    [(ui/translate 10 10
+                   (memframe/get-scrollview :my-scrollview [300 300]
+                                            (ui/label text)))])
+
+(comment
+
+
+  (def lorem-ipsum (clojure.string/join
+                    "\n"
+                    (repeatedly 800
+                                (fn []
+                                  (clojure.string/join
+                                   (repeatedly (rand-int 50)
+                                               #(rand-nth "abcdefghijklmnopqrstuvwxyz ")))))))
+
+  (skia/run #(memframe/re-frame-app (test-scrollview lorem-ipsum))))
