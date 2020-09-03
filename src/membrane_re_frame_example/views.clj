@@ -156,14 +156,21 @@
   (skia/run #(memframe/re-frame-app (todo-app))))
 
 
+(defn fix-scroll [elem]
+  (ui/on-scroll (fn [[sx sy] mpos]
+                  (ui/scroll elem [(- sx) (- sy)] mpos))
+                elem))
+
 (defn test-scrollview [text]
-    [(ui/translate 10 10
-                   (memframe/get-scrollview :my-scrollview [300 300]
-                                            (ui/label text)))])
+  (ui/translate 10 10
+                (vertical-layout
+                 (memframe/get-scrollview :my-scrollview [300 300]
+                                          (ui/label text))
+                 (fix-scroll
+                  (memframe/get-scrollview :my-scrollview2 [300 300]
+                                           (ui/label text))))))
 
 (comment
-
-
   (def lorem-ipsum (clojure.string/join
                     "\n"
                     (repeatedly 800
