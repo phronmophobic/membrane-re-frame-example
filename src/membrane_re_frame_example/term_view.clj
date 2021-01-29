@@ -15,33 +15,9 @@
   (:gen-class))
 
 
-(def text-boxes (atom {}))
-(def text-box-dispatch (component/default-handler text-boxes))
-(defn get-text-box [tid text]
-  (let [all-data @text-boxes
-        data (get all-data tid)
-        args (apply concat
-                    [:text text]
-                    [:focus (get all-data ::focus)]
-                    (for [[k v] data
-                          :when (not= k :text)]
-                      [k v]))
-        $args [:$text [(list 'get tid) :text]
-               :$font [(list 'get tid) :font]
-               :$textarea-state [(list 'get tid) :textarea-state]
-               :$extra [(list 'get tid) :border?]
-               :$focus [::focus]]]
-    (ui/on-bubble
-     (fn [effects]
-       (text-box-dispatch :set [(list 'get tid) :text] text)
-       (run! #(apply text-box-dispatch %) effects)
-       (let [new-data (get @text-boxes tid)
-             new-text (:text new-data)]
-         (when (not= new-text text)
-           [[:change new-text]])))
-     (apply lanterna/textarea (concat args $args)))))
 
 
+(memframe/defrf textbox lanterna/textarea [tid {:keys [text]}])
 
 (defn todo-input [{:keys [id title on-save on-stop]}]
   (let [input-id [:todo-input id]
@@ -60,9 +36,10 @@
           (handler s)))
       (on
        :change
-       (fn [s]
-         [[:set-input-text input-id s]])
-       (get-text-box input-id text))))))
+       (fn [k v]
+         (when (= k :text)
+           [[:set-input-text input-id v]]))
+       (textbox input-id {:text text}))))))
 
 
 
@@ -88,9 +65,10 @@
                        (lanterna/label "X")))))
      (on
       :change
-      (fn [s]
-        [[:save id s]])
-      (get-text-box input-id title)))))
+      (fn [k v]
+        (when (= k :text)
+          [[:save id v]]))
+      (textbox input-id {:text title})))))
 
 
 (defn task-list

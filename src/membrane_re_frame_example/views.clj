@@ -16,15 +16,20 @@
 
 
 
+(memframe/defrf button basic/button [bid {:keys [text]}])
+
 
 (defn todo-input [{:keys [id title on-save on-stop]}]
   (let [input-id [:todo-input id]
         text @(rf/subscribe [:input-text input-id])]
     (horizontal-layout
-     (ui/button "Add Todo"
-                (fn []
-                  [(on-save text)
-                   [:set-input-text input-id ""]]))
+     (on
+      :mouse-down
+      (fn [m]
+        [(on-save text)
+         [:set-input-text input-id ""]])
+      (button :add-todo-button
+              {:text "Add Todo"}))
      (ui/wrap-on
       :key-press
       (fn [handler s]
@@ -36,9 +41,10 @@
        10 5
        (on
         :change
-        (fn [s]
-          [[:set-input-text input-id s]])
-        (memframe/get-text-box input-id text)))))))
+        (fn [k v]
+          (when (= k :text)
+            [[:set-input-text input-id v]]))
+        (memframe/text-box input-id {:text text})))))))
 
 
 (defn delete-X []
@@ -75,9 +81,10 @@
      
      (on
       :change
-      (fn [s]
-        [[:save id s]])
-      (memframe/get-text-box input-id title)))))
+      (fn [k v]
+        (when (= k :text)
+          [[:save id v]]))
+      (memframe/text-box input-id {:text title})))))
 
 
 (defn task-list
@@ -123,9 +130,11 @@
          (a-fn kw txt))))
      (ui/spacer 0 5)
      (when (pos? done)
-       (ui/button "Clear completed"
-                  (fn []
-                    [[:clear-completed]]))))))
+       (on
+        :mouse-down (fn [_]
+                      [[:clear-completed]])
+        (button :clear-completed
+                {:text "Clear completed"}))))))
 
 
 (defn task-entry
@@ -153,7 +162,8 @@
 
 (defn -main [& args]
   (dispatch [:initialize-db])  
-  (skia/run #(memframe/re-frame-app (todo-app))))
+  (skia/run #(memframe/re-frame-app (todo-app)))
+  ,)
 
 
 (defn fix-scroll [elem]
@@ -164,11 +174,13 @@
 (defn test-scrollview [text]
   (ui/translate 10 10
                 (vertical-layout
-                 (memframe/get-scrollview :my-scrollview [300 300]
-                                          (ui/label text))
+                 (memframe/scrollview :my-scrollview
+                                      {:scroll-bounds [300 300]
+                                       :body (ui/label text)})
                  (fix-scroll
-                  (memframe/get-scrollview :my-scrollview2 [300 300]
-                                           (ui/label text))))))
+                  (memframe/scrollview :my-scrollview2
+                                       {:scroll-bounds[300 300]
+                                        :body (ui/label text)})))))
 
 (comment
   (def lorem-ipsum (clojure.string/join
