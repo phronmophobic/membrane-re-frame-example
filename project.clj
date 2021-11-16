@@ -3,11 +3,12 @@
   :url "http://example.com/FIXME"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
             :url "https://www.eclipse.org/legal/epl-2.0/"}
-  :dependencies [[org.clojure/clojure "1.10.2-alpha1"]
-                 [com.phronemophobic/membrane "0.9.27-beta"]
-                 [com.phronemophobic.membrane/skialib-macosx "0.9.27-beta"]
-                 [com.phronemophobic.membrane/skialib-linux "0.9.27-beta"]
-                 [re-frame "1.0.0-rc3"]
+  :dependencies [[org.clojure/clojure "1.10.3"]
+                 [com.phronemophobic/membrane "0.9.31.1-beta"]
+                 [com.phronemophobic.membrane/skialib-macosx-x86-64 "0.9.31.0-beta"]
+                 [com.phronemophobic.membrane/skialib-macosx-aarch64 "0.9.31.0-beta"]
+                 [com.phronemophobic.membrane/skialib-linux-x86-64 "0.9.31.0-beta"]
+                 [re-frame "1.2.0"]
                  [com.googlecode.lanterna/lanterna "3.1.1"]]
   :aliases
   {"native"
