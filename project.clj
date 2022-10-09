@@ -4,11 +4,11 @@
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.3"]
-                 [com.phronemophobic/membrane "0.9.31.8-beta"]
+                 [com.phronemophobic/membrane "0.10.0-beta"]
                  [com.phronemophobic.membrane/skialib-macosx-x86-64 "0.9.31.0-beta"]
                  [com.phronemophobic.membrane/skialib-macosx-aarch64 "0.9.31.0-beta"]
                  [com.phronemophobic.membrane/skialib-linux-x86-64 "0.9.31.0-beta"]
-                 [re-frame "1.3.0-rc2"]
+                 [re-frame "1.3.0"]
                  [com.googlecode.lanterna/lanterna "3.1.1"]]
   :aliases
   {"native"
